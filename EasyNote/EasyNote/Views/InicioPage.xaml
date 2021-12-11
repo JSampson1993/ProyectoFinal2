@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EasyNote.Views.InicioPage"
+             BackgroundColor="White" 
+             Shell.FlyoutBehavior="Disabled"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="Auto"/>
+
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" Margin="0,0,0,20">
+                    <Image Source="contents.png" HeightRequest="100" WidthRequest="100"/>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="Center" Grid.Column="0" Grid.Row="1">
+                    <Label Text="EasyNote " TextColor="#333333" FontSize="50" FontAttributes="Bold" HorizontalOptions="Center" />
+                </StackLayout>
+
+                <StackLayout Grid.Column="0" Grid.Row="2" HorizontalOptions="Center" Spacing="10">
+                    <Frame Padding="0,4,0,4" HasShadow="True">
+                        <Button Text="Registrar" HeightRequest="45" WidthRequest="250"  TextColor="#333333" BackgroundColor="#75EAB9" FontAttributes="Bold" FontSize="10" x:Name="RegistroNav" Clicked="RegistroNav_Clicked"/>
+                    </Frame>
+                    <Frame Padding="0,4,0,4" HasShadow="True">
+                        <Button Text="Tienes una cuenta?" HeightRequest="45" WidthRequest="250" TextColor="#333333" BackgroundColor="#75EAB9" FontAttributes="Bold" FontSize="10" x:Name="LoginNav" Clicked="LoginNav_Clicked"/>
+                    </Frame>
+
+                    <StackLayout HorizontalOptions="Center" Grid.Column="0" Grid.Row="4">
+                        <Label Text="2021 App Desarrollo" TextColor="Black" FontSize="10" FontFamily="San" HorizontalOptions="Center"/>
+                    </StackLayout>
+                </StackLayout>
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

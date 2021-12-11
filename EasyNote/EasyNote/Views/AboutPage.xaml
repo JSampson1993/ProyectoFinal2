@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EasyNote.Views.AboutPage"
+             xmlns:vm="clr-namespace:EasyNote.ViewModels"
+              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:views="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"   
+             Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems >
+
+
+        <ToolbarItem Icon="search.png" 
+                     Priority="0" 
+                     Order="Primary" 
+                     
+                     />
+        <ToolbarItem Text="Seleccionar notas" Priority="1" Order="Secondary"  />
+        <ToolbarItem Text="Ordenar por" Priority="2" Order="Secondary"  />
+        <ToolbarItem Text="Recordatorio" Priority="2" Order="Secondary"  />
+        <ToolbarItem Text="Borrar" Priority="2" Order="Secondary" />
+
+    </ContentPage.ToolbarItems>
+
+
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#03e09e</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                    <Image Source="paper.png" VerticalOptions="Center" HeightRequest="100" />
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+
+
+        <CarouselView ItemsSource="{Binding MyImages}" Margin="20">
+            <CarouselView.EmptyView>
+                <ScrollView Grid.Row="3">
+                    <StackLayout Orientation="Vertical" Padding="60,250,70,20" Spacing="20">
+                        <Grid>
+
+                            <Label Text="Pulsa + para crear una nota. Haz una foto, añade un archivo adjunto o escribe texto." FontSize="20" 
+                               VerticalOptions="CenterAndExpand" Padding="0,0,0,0" HorizontalTextAlignment="Center"/>
+
+
+                        </Grid>
+                    </StackLayout>
+                </ScrollView>
+            </CarouselView.EmptyView>
+        </CarouselView>
+
+        <pv:PancakeView HorizontalOptions="End"  
+                        VerticalOptions="End" 
+                        Margin="30" 
+                        CornerRadius="40"
+                        Padding="15">
+            <pv:PancakeView.BackgroundGradientStops>
+                <pv:GradientStopCollection>
+                    <pv:GradientStop Color="#03e09e" Offset="0"></pv:GradientStop>
+                    <pv:GradientStop Color="#81F7D8" Offset="1"></pv:GradientStop>
+                </pv:GradientStopCollection>
+            </pv:PancakeView.BackgroundGradientStops>
+
+            <views:Expander HorizontalOptions="End"  VerticalOptions="End">
+                <views:Expander.Header>
+                    <Image Source="plus.png" WidthRequest="30" HeightRequest="30" Rotation="180">
+                        <Image.Triggers>
+                            <DataTrigger TargetType="Image"
+                                     Binding="{Binding Source={RelativeSource AncestorType={x:Type views:Expander}}, Path=IsExpanded}"
+                                                       Value="True">
+                                <Setter Property="Source" Value="close.png" />
+                            </DataTrigger>
+                        </Image.Triggers>
+                    </Image>
+                </views:Expander.Header>
+                <StackLayout Spacing="30" Margin="0,20">
+                    <ImageButton Source="addtext.png" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent" Clicked="ImageButton_Clicked"/>
+                    <ImageButton Source="Microphone.png" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent" Clicked="ImageButton_Clicked_2"/>
+                    <ImageButton Source="cam.png" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent" Clicked="ImageButton_Clicked_1"/>
+                </StackLayout>
+            </views:Expander>
+
+        </pv:PancakeView>
+
+
+    </Grid>
+
+</ContentPage>

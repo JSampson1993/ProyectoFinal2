@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EasyNote.Views.ItemsPage"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:EasyNote.ViewModels"  
+             xmlns:model="clr-namespace:EasyNote.Models"  
+             x:Name="BrowseItemsPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddItemCommand}" />
+    </ContentPage.ToolbarItems>
+    <!--
+      x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
+      https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
+    -->
+    <ListView x:Name="listaNotas" SelectionMode="Single" ItemsSource="{Binding ENotas}" ItemTapped="listaNotas_ItemTapped" >
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+
+                        </Grid.RowDefinitions>
+
+                        <Label x:Name="lblnota" Grid.Row="0" Grid.Column="0" Text="{Binding notasId}"
+                                       FontAttributes="Bold" TextTransform="Uppercase"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" Text="{Binding notas_Descrip}"
+                                       FontAttributes="Bold" LineBreakMode="TailTruncation" />
+
+                    </Grid>
+
+                    <!--<StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding notasId}"/>
+                        <Label Text="{Binding notas_Descrip}"/>
+                        <Label Text="{Binding notas_Image}"/>
+                    </StackLayout>-->
+
+                    <!--<StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding longitud}"/>
+                        <Label Text="{Binding latitud}"/>
+                        <Label Text="{Binding descripcion}"/>
+                    </StackLayout>-->
+
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

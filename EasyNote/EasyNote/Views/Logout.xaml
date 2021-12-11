@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EasyNote.Views.Logout">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+                <Label    Text = "Panda Profile" 
+                          HorizontalTextAlignment = "Center" 
+                          FontSize = "Title"
+                          Margin = "2,50,0,0" 
+                          HorizontalOptions = "Start" 
+                          VerticalOptions = "Center" 
+                          TextColor = "Black" />
+
+                <Label      Text = "exampla@gmail.com"
+                            FontAttributes="Bold"
+                            FontSize = "Large" Margin = "2,0,0,0"
+                            VerticalOptions = "StartAndExpand"
+                            TextColor = "#0d0d0d" />
+
+                <Entry
+                    Placeholder="Day@gmail.com"
+                    Keyboard="Email"
+                    MaxLength="25"
+                    x:Name="txtEmail"
+                    Text="{Binding txtEmail, Mode=TwoWay}"
+                    IsEnabled="{Binding IsEnabledTxt}"
+                    FontSize="{OnPlatform Android=15,iOS=16}"
+                    />
+            </StackLayout>
+
+
+            <Button
+                            VerticalOptions="CenterAndExpand"
+                            Text="Cerrar Session"
+                            TextColor="Black"
+                            Font="Montserrat-Medium.otf"
+                            FontSize="{OnPlatform Android=15}"
+                            BackgroundColor="#fcfcfc"
+                            BorderColor="#f2f2f2"
+                            BorderWidth="4"
+                            CornerRadius="15"
+                            WidthRequest="30"
+                            HeightRequest="50"
+                            IsEnabled="{Binding IsEnabledTxt}"
+                            Clicked="Button_Clicked"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

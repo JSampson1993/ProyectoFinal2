@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EasyNote.Views.NotaView"
+             NavigationPage.HasNavigationBar="False">
+    
+
+    <ContentPage.ToolbarItems >
+
+
+        <ToolbarItem Icon="guardar.png" 
+                     Priority="0" 
+                     Order="Primary" 
+                     Clicked="ToolbarItem_Clicked"
+                     />
+        <ToolbarItem Icon="camaras.png" 
+                     Priority="1" 
+                     Order="Primary" 
+                     Clicked="ToolbarItem_Clicked_1" 
+                     />
+        <ToolbarItem Icon="gallerya" 
+                     Priority="2" 
+                     Order="Primary" 
+                     Clicked="ToolbarItem_Clicked_2" />
+
+        <ToolbarItem Icon="delete1.png" 
+                     Priority="3" 
+                     Order="Primary" 
+                     Clicked="ToolbarItem_Clicked_3" />
+
+        <ToolbarItem Text="Compartir" Priority="2" Order="Secondary" Clicked="ToolbarItem_Clicked" />
+        <ToolbarItem Text="Grabadora" Priority="2" Order="Secondary" Clicked="ToolbarItem_Clicked" />
+        <ToolbarItem Text="Recordatorio" Priority="2" Order="Secondary" Clicked="ToolbarItem_Clicked" />
+        <ToolbarItem Text="Borrar" Priority="2" Order="Secondary" Clicked="ToolbarItem_Clicked" />
+
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout VerticalOptions="Start" HorizontalOptions="CenterAndExpand" >
+
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition  />
+
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Grid.Row="0" HorizontalOptions="FillAndExpand">
+                        <Entry x:Name="txtidnotas"
+                    Placeholder="Introducir titulo" FontAttributes="Bold" TextColor="#BDBDBD" 
+                    FontSize="{OnPlatform Android=20,iOS=23}" WidthRequest="300"
+                            Text="{Binding notasId}"
+                    />
+
+                    
+
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="1" HorizontalOptions="Fill" WidthRequest="{OnPlatform iOS=300,Android=300}" Orientation="Vertical"  >
+                        <Label
+                   
+                    FontSize="{OnPlatform Android=13}"
+                    TextColor="Black"
+                            
+                    />
+                        <Frame
+                    HasShadow="{OnPlatform Android=true,iOS=false}"
+                    Padding="{OnPlatform Android=6,iOS=0}"
+                    CornerRadius="{OnPlatform Android=7}"
+                    >
+
+                            <Editor
+                            
+                            AutoSize="TextChanges"
+                            Completed="Editor_Completed" 
+                            Placeholder="Marca para introducir contenido"
+                            Keyboard="Text"
+                            MaxLength="1000"
+                            FontSize="{OnPlatform Android=15,iOS=16}"
+                            Text="{Binding notas_Descrip}"
+                            IsEnabled="{Binding IsEnabledTxt}"
+                               x:Name="txtdescri"
+                                
+                            />
+
+                        </Frame>
+
+                    </StackLayout>
+                    <!--Text="{Binding tecladoTxt, Mode=TwoWay}"-->
+                    <StackLayout Grid.Row="3" HorizontalOptions="Fill" WidthRequest="{OnPlatform iOS=300,Android=300}" Orientation="Vertical" Margin="15,1,15,30" IsVisible="false">
+                        <Entry x:Name="txtimagen" Text="{Binding notas_Image}" />
+
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="4" HorizontalOptions="Fill" WidthRequest="{OnPlatform iOS=300,Android=300}" Orientation="Vertical" Margin="15,1,15,30" >
+                        <Image
+                            x:Name="image1" 
+                            Aspect="AspectFit"  HeightRequest="500" WidthRequest="150" 
+                            ></Image>
+
+                    </StackLayout>
+
+
+                </Grid>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
